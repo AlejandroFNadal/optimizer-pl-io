@@ -4,6 +4,7 @@ import {UncontrolledPopover, PopoverBody, PopoverHeader, Input,InputGroupText,In
 import ReactDOM from 'react-dom'
 import logo from "../../components/LinealProgramming/logo.svg";
 import metodoDerivadas from "../NoLinealProgramming/Methods/pruebaDerivadas/getDerivadas"
+import spinner from '../img/spinner.gif'
 class Derivadas extends React.Component{
     constructor(props){
         super(props)
@@ -47,7 +48,8 @@ class Derivadas extends React.Component{
             arregloIncognitas[i] = arregloIncognitas[i].trim()
              }
           
-          
+             ReactDOM.render(<img src={spinner} alt="carga de la resolucion"></img>, document.getElementById("resolucion"))
+              
           try {
             metodoDerivadas(funcion, arregloIncognitas)
             .then(resp => {
@@ -55,7 +57,6 @@ class Derivadas extends React.Component{
                 if(resp.hasOwnProperty("caso")){
                   this.setState({solucionMetodo:resp})
               }}
-          
               this.muestraResultado();
             }
             )
@@ -77,6 +78,7 @@ class Derivadas extends React.Component{
       let {solucionMetodo} = this.state
       let caso = solucionMetodo.caso
       let resolucion;
+      ReactDOM.render(<></>, document.getElementById("resolucion"))
       if (caso ===""){
         
         ReactDOM.render(<></>, document.getElementById("resolucion"))
