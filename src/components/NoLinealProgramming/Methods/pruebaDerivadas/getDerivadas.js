@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+
 import ptoFactible from './getPtoFactible'
 const algebra = require('algebra.js');
 const math = require('mathjs');
@@ -92,12 +92,12 @@ const metodoDerivadas = async (z,incognitas)=>{
             if(incognitas.length==2){
                 if(detHessiano>0){
                     //console.log("PUNTO FACTIBLE")
-                    derivadax2 = hessiano[0][0]
+                    var derivadax2 = hessiano[0][0]
                     if(derivadax2 >0){
                         //console.log(`ELEMENTO 00 ES ${derivadax2}`)
                         //console.log("----------------MINIMO-------------------");
                         //console.log(`EVALUANDO Z EN EL PUNTO : ${punto} `)
-                        expressionEvaluada = math.evaluate(z,scope)
+                        var expressionEvaluada = math.evaluate(z,scope)
                         //console.log("-------------resultado evaluacion---------")
                         //console.log(`FUNCION A EVALUAR : ${z}`)
                         //console.log(`RESULTADO: ${expressionEvaluada}`)
