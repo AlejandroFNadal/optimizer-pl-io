@@ -5,7 +5,7 @@ import logo from "../../components/LinealProgramming/logo.svg";
 
 import ReactDOM from 'react-dom'
 import spinner from '../img/spinner.gif'
-const {lagrangeMul} = require('./Methods/lagrangeMul')
+import lagrangeMul from './Methods/lagrangeMul'
 
 //import lagrangeMul from './Methods/lagrangeMul'
 //El formato de lo que se devuelve es el siguiente
