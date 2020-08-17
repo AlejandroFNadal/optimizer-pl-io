@@ -1,7 +1,8 @@
 /* eslint-disable no-undef */
+import ptoFactible from './getPtoFactible'
 const algebra = require('algebra.js');
 const math = require('mathjs');
-const {ptoFactible} = require('./getPtoFactible')
+
 const {getMatrizHessiana} = require('./getMatrizHessiana')
 
 
@@ -17,7 +18,7 @@ const metodoDerivadas = async (z,incognitas)=>{
     var hessiano;
     var detHessiano;
     const getDerivadas = (z,incognitas) =>{
-        cantidadDerivadasH = incognitas.lenght**2
+        var cantidadDerivadasH = incognitas.lenght**2
         var derivadas = []
         var filaDerivadas = []
         var derivadasPrimeras = []
@@ -37,7 +38,7 @@ const metodoDerivadas = async (z,incognitas)=>{
         
         // console.log(derivadas)
             
-        salida = {
+        var salida = {
             "derivadasPrim": derivadasPrimeras,
             "derivadas": derivadas
         }
@@ -47,7 +48,7 @@ const metodoDerivadas = async (z,incognitas)=>{
     const resultado = getDerivadas(z,incognitas)
     var objetoResultado = {}
     
-    arregloDerivadas = []
+    var arregloDerivadas = []
     for (let i = 0; i < incognitas.length; i++) {
         var filaDerivada =[]
         for (let j = 0; j < incognitas.length; j++) {
@@ -138,7 +139,7 @@ const metodoDerivadas = async (z,incognitas)=>{
                 //console.log("-----------3 VARIABLES--------------")
                 //tengo que sacar todos los determinantes de las submatrices del hessiano
                 //tengo que hacer una copia de la matriz hessiana, para que no se modifique la original
-                matrizHessianaMath = math.clone(math.matrix(hessiano))
+                var matrizHessianaMath = math.clone(math.matrix(hessiano))
                 var subMatrices=[]
                 // [subMatrizn,subMatrizn-1,subMatrizn-2]
                 var SubDeterminantes = []
@@ -238,4 +239,4 @@ const metodoDerivadas = async (z,incognitas)=>{
 //auxiliarDerivadas = [['2*x1', '4'],['5', '3*x2']]
 
 
-module.exports = {metodoDerivadas}
+export default metodoDerivadas

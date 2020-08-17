@@ -6,7 +6,7 @@ const { json } = require('mathjs');
 
 const ptoFactible = async (derivadasPrim,variables)=>{
     //console.log(derivadasPrim.toString());
-    derivadasPrimarias = derivadasPrim.toString();
+    var derivadasPrimarias = derivadasPrim.toString();
     var derivadasSplit = derivadasPrimarias.toString().split(',');
     var urlEcuaciones = "ecuaciones="
     derivadasSplit.forEach(derivada =>{
@@ -54,12 +54,11 @@ const ptoFactible = async (derivadasPrim,variables)=>{
         
         rtaFetch[i]=rtaFetch[i].split('sqrt').join('Math.sqrt')
         //console.log(rtaFetch[i])
-
+        
         rtaFetchNum.push(eval(rtaFetch[i]))
         
     }
     
     return rtaFetchNum
 }
-
-module.exports={ptoFactible}
+export default ptoFactible
