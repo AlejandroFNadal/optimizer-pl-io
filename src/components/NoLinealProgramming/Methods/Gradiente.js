@@ -129,21 +129,40 @@ const fGradiente = (funcionObjetivo,puntoa,puntob,e,Objetivo) => {
           ZconR = ZconR.split("y").join(x1conR[1]);
           console.log("ZconR")
           console.log(ZconR)
+          
           if ( (ZconR).includes("r") ){
-               //Aca se despejaria r pero nada anda
+               //Aca se despejaria r pero nada anda por ahora
                helper = ZconR.split("r").join("x");
-               helper = math.simplify(helper);
+
+               //helper = math.simplify(helper);
                console.log("ZconR reemplazado r por x")
                console.log(helper.toString())
                helper = (helper.toString()).split("+ -").join("-");
                helper = (helper.toString()).split("+-").join("-");
-               valorR = algebrite.nroots(helper.toString());
+               helper=math.derivative(helper.toString(),'x');
+               valorR = algebrite.roots(helper.toString());
                console.log("raices de helper")
                console.log(valorR.toString())
-               var primerElemento = valorR[0];
-               console.log(primerElemento)
-               valorR = valorR.toString()
+               valorR=valorR.toString()
+               /*
+                    aca intento evaluar la expresion
+               */
+               //Eliminacion de corchetes
+               valorR=valorR.replace('[','')
+               valorR=valorR.replace(']','')
 
+               arregloRaices= valorR.split(',')
+               var arregloRaicesEvaluado=[]
+
+               console.log("ArregloRaices")
+               console.log(arregloRaices)
+               arregloRaices.forEach(element=>{
+                    arregloRaicesEvaluado.push(eval(element))
+               })
+               console.log("Evaluacion de las raices")
+               console.log(arregloRaicesEvaluado)
+          }
+               /*
                //Su nivel de suciedad es insuperable
                valorR = valorR[1]+valorR[2]+valorR[3]+valorR[4]+valorR[5]+valorR[6]+valorR[7]
                console.log("valorR en 2")
@@ -155,7 +174,8 @@ const fGradiente = (funcionObjetivo,puntoa,puntob,e,Objetivo) => {
                valorR = 0;
                break;
           }
-
+          */
+          valorR = arregloRaicesEvaluado[0]
           // Reemplazo r en X1
           x1 = [ (Parser.parse(x1conR[0].toString())).evaluate({r: eval(valorR)}) , (Parser.parse(x1conR[1].toString())).evaluate({r: eval(valorR.toString())}) ];
 
@@ -172,7 +192,8 @@ const fGradiente = (funcionObjetivo,puntoa,puntob,e,Objetivo) => {
      console.log((math.abs(Z0-Z1)),epsilon,valorR,salida);
      return x1;
 
+} //Ahi deberia estar bien los corchetes
 
-}
-fGradiente("4*x+6*y-2*x^2-2*x*y-2*x^2",1,1,0.1,"max")
-module.exports = fGradiente
+
+console.log(fGradiente("(4*x)+(6*y)-(2*(x^2))-(2*x*y)-(2*(y^2))",1,1,0.1,"max"));
+//module.exports = fGradiente
