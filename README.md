@@ -17,6 +17,7 @@ Integrantes del Equipo de Desarrollo:
 -Zaracho Simonetto, Carlos Santino.
 
 Clickeado [Aqui](https://optimizer-lp.web.app/), usted puede acceder a la version nueva del proyecto.
+
 Integrantes del Equipo de Modificacion:
 -Cuzziol Boccioni, Facundo Ramiro.
 -Diez, Danilo Antonio.
