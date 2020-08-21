@@ -43,6 +43,7 @@ const fGradiente = (funcionObjetivo,puntoa,puntob,e,Objetivo) => {
      derivadaExpr = [ math.derivative(expr.toString(),'x') , math.derivative(expr.toString(),'y')];
      //al principio, la primera comparacion es 1>0 y salida arranca en 0
      while (((math.abs(valorR)) > epsilon) && (salida < 29)){
+
           epsilon=e;
           // La variable salida representa la condicion en la que el punto se encuentra en el infinito
           salida = salida + 1;
@@ -154,6 +155,7 @@ const fGradiente = (funcionObjetivo,puntoa,puntob,e,Objetivo) => {
                /*console.log("Helper antes")
                console.log(helper.toString())*/
 
+
                helper=math.rationalize(helper);
                
 
@@ -198,8 +200,6 @@ const fGradiente = (funcionObjetivo,puntoa,puntob,e,Objetivo) => {
      if ((x1[0])>9999999 || (x1[1])>9999999){
           x1 = [ -Infinity , Infinity ];
      } 
-
-     //console.log((math.abs(Z0-Z1)),epsilon,valorR,salida);
      return x1;
 
 }
