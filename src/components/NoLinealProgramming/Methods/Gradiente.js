@@ -170,7 +170,7 @@ const fGradiente = (funcionObjetivo,puntoa,puntob,e,Objetivo) => {
                valorR=valorR.replace('[','')
                valorR=valorR.replace(']','')
 
-               arregloRaices= valorR.split(',')
+               var arregloRaices= valorR.split(',')
                var arregloRaicesEvaluado=[]
 
                /*console.log("ArregloRaices")
